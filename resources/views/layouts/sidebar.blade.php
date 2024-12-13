@@ -15,6 +15,7 @@
                                 class="icon icon-chart-bar-33"></i><span class="nav-text">Dashboard</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('dashboard')}}">Dashboard </a></li>
+                            <li><a href="{{ route('rental.index')}}">Rental </a></li>
                             {{-- <li><a href="./index2.html">Dashboard 2</a></li> --}}
                         </ul>
                     </li>

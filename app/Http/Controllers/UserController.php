@@ -60,13 +60,16 @@ class UserController extends Controller
         }
 
         if (in_array('ADM', $role)) {
+            
+
             $request->validate([
-                'foto' => 'mimes:png,jpg|max:1000'
+                'foto' => 'mimes:png,jpg'
             ]);
-        }
+       
 
         $rentalMobil = RentalMobil::where('user_id', $user->id)->first();
-
+    
+        
 
         if ($rentalMobil) {
             $rentalMobil->nama_rental = $request->nama_rental;
@@ -81,19 +84,21 @@ class UserController extends Controller
                         @unlink($fotoL);
                     }
                 }
-
-                $rentalMobil->save();
-            } else {
-                RentalMobil::create([
-                    'user_id' => $user->id,
-                    'nama_rental' => $request->nama_rental,
-                    'deskripsi' => $request->deskripsi,
-                    'alamat' => $request->alamat,
-                    'no_hp' => $request->no_hp,
-                    'foto' => $request->file('foto')->store('rental-mobil', 'public')
-                ]);
-            }
+               
+            } 
+            $rentalMobil->save();
+        }else {
+            RentalMobil::create([
+                'user_id' => $user->id,
+                'nama_rental' => $request->nama_rental,
+                'deskripsi' => $request->deskripsi,
+                'alamat' => $request->alamat,
+                'no_hp' => $request->no_hp,
+                'foto' => $request->file('foto')->store('rental-mobil', 'public')
+            ]);
         }
+
+    }
 
         return redirect()->back()->with('success', 'Profile Berhasil Diperbarui!');
     }

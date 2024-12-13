@@ -143,6 +143,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Alamat</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" name="alamat" id="alamat" cols="30" rows="10">{{ $user->rentalMobil->alamat ?? '' }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">No Hp</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="no_hp"

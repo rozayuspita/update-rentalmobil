@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RentalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,3 +52,7 @@ Route::middleware(['auth', 'checkUserDetail'])->group(function () {
         Route::put('profile/{id}', [UserController::class, 'update'])->name('users.profile');
     });
 });
+
+Route::get('/rental', [RentalController::class, 'index'])->name('rental.index');
+Route::get('/rental/create', [RentalController::class, 'create'])->name('rental.create');
+Route::post('/rental/store', [RentalController::class, 'store'])->name('rental.store');
